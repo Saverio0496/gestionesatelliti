@@ -52,7 +52,7 @@
 				      <div class="container-fluid py-5">
 				        <h1 class="display-5 fw-bold">Benvenuto alla Gestione Satelliti</h1>
 				        <p class="col-md-8 fs-4">Da qui potrai gestire tutti i satelliti di nostra competenza. Buon viaggio! </p>
-				        <a class="btn btn-primary btn-lg" href="${pageContext.request.contextPath}/impiegato/search">Vai a Ricerca</a>
+				        <a class="btn btn-primary btn-lg" href="${pageContext.request.contextPath}/satellite/listAll">Vai alla lista Satelliti</a>
 				      </div>
 			    </div>
 			    
@@ -65,9 +65,9 @@
 			        <div class="feature-icon bg-primary bg-gradient">
 			          <svg class="bi" width="1em" height="1em"><use xlink:href="#collection"/></svg>
 			        </div>
-			        <h2>Ricerca Impiegati</h2>
-			        <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
-			        <a href="impiegato/search" class="icon-link">
+			        <h2>Ricerca Satellite</h2>
+			        <p>Da qui potrai effettuare ricerche tra tutti i nostri satelliti!</p>
+			        <a href="satellite/search" class="icon-link">
 			          Vai alla funzionalità
 			          <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"/></svg>
 			        </a>
@@ -76,26 +76,15 @@
 			        <div class="feature-icon bg-primary bg-gradient">
 			          <svg class="bi" width="1em" height="1em"><use xlink:href="#people-circle"/></svg>
 			        </div>
-			        <h2>Inserisci Nuovo Impiegato</h2>
-			        <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
-			        <a href="impiegato/insert" class="icon-link">
+			        <h2>Inserisci Nuovo Satellite</h2>
+			        <p>Da qui potrai inserire un nuovo satellite nel nostro database!</p>
+			        <a href="satellite/insert" class="icon-link">
 			          Vai alla funzionalità
 			          <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"/></svg>
 			        </a>
 			      </div>
-			      <div class="feature col">
-			        <div class="feature-icon bg-primary bg-gradient">
-			          <svg class="bi" width="1em" height="1em"><use xlink:href="#toggles2"/></svg>
-			        </div>
-			        <h2>Altra Funzione</h2>
-			        <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
-			        <a href="#" class="icon-link">
-			          Vai alla funzionalità
-			          <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"/></svg>
-			        </a>
 			      </div>
 			    </div>
-			  </div>
 			  
 			</main>
 			
