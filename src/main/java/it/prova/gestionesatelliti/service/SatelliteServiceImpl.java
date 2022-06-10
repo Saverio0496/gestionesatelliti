@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import it.prova.gestionesatelliti.model.Satellite;
 import it.prova.gestionesatelliti.repository.SatelliteRepository;
@@ -14,6 +15,8 @@ public class SatelliteServiceImpl implements SatelliteService {
 	@Autowired
 	private SatelliteRepository repository;
 
+	@Override
+	@Transactional(readOnly = true)
 	public List<Satellite> listAllElements() {
 		return null;
 	}
