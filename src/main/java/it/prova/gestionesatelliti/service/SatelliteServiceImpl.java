@@ -18,7 +18,7 @@ public class SatelliteServiceImpl implements SatelliteService {
 	@Override
 	@Transactional(readOnly = true)
 	public List<Satellite> listAllElements() {
-		return null;
+		return (List<Satellite>) repository.findAll();
 	}
 
 	public Satellite caricaSingoloElemento(Long id) {
@@ -28,7 +28,10 @@ public class SatelliteServiceImpl implements SatelliteService {
 	public void aggiorna(Satellite satelliteInstance) {
 	}
 
+	@Override
+	@Transactional
 	public void inserisciNuovo(Satellite satelliteInstance) {
+		repository.save(satelliteInstance);
 	}
 
 	public void rimuoviPerId(Long idSatellite) {
