@@ -36,7 +36,10 @@ public class SatelliteServiceImpl implements SatelliteService {
 		repository.save(satelliteInstance);
 	}
 
+	@Override
+	@Transactional
 	public void rimuoviPerId(Long idSatellite) {
+		repository.deleteById(idSatellite);
 	}
 
 	public List<Satellite> findByExample(Satellite example) {
