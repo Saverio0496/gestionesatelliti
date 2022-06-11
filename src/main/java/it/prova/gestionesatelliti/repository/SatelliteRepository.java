@@ -10,7 +10,9 @@ import it.prova.gestionesatelliti.model.Satellite;
 import it.prova.gestionesatelliti.model.StatoSatellite;
 
 public interface SatelliteRepository extends CrudRepository<Satellite, Long>, JpaSpecificationExecutor<Satellite> {
-	
+
 	public List<Satellite> findAllByDataLancioBeforeAndStatoNot(Date dataLancio, StatoSatellite stato);
+
+	public List<Satellite> findAllByStatoAndDataRientroIsNull(StatoSatellite stato);
 
 }

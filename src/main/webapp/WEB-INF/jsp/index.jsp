@@ -53,8 +53,10 @@
 				        <h1 class="display-5 fw-bold">Benvenuto alla Gestione Satelliti</h1>
 				        <p class="col-md-8 fs-4">Da qui potrai gestire tutti i satelliti di nostra competenza. Buon viaggio! </p>
 				        <a class="btn btn-primary btn-lg" href="${pageContext.request.contextPath}/satellite">Vai alla lista Satelliti</a>
-				        <a class="btn btn-primary btn-lg" href="${pageContext.request.contextPath}/satellite/launched2yearsago/">Vai alla lista Satelliti lanciati da più di due anni</a>
-				      </div>
+				        <a class="btn btn-primary btn-lg" href="${pageContext.request.contextPath}/satellite/launched2yearsago/">Vai alla lista Satelliti lanciati da più di due anni</a><br><br>
+				        <a class="btn btn-primary btn-lg" href="${pageContext.request.contextPath}/satellite/disabledbutnotreturned/">Vai alla lista Satelliti disattivati ma non ancora rientrati</a>
+				        <a class="btn btn-primary btn-lg" href="${pageContext.request.contextPath}/satellite/launched2yearsago/">Vai alla lista Satelliti lanciati da più di due anni</a>				      
+				 </div>
 			    </div>
 			    
 			  </div>

@@ -88,4 +88,10 @@ public class SatelliteServiceImpl implements SatelliteService {
 				StatoSatellite.DISATTIVATO);
 	}
 
+	@Override
+	@Transactional(readOnly = true)
+	public List<Satellite> trovaSatellitiDisattivatiMaNonAncoraRientrati() {
+		return repository.findAllByStatoAndDataRientroIsNull(StatoSatellite.DISATTIVATO);
+	}
+
 }

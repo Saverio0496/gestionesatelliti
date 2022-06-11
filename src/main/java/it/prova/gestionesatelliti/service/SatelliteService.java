@@ -18,4 +18,6 @@ public interface SatelliteService {
 	public List<Satellite> findByExample(Satellite example);
 
 	public List<Satellite> cercaTuttiISatellitiLanciatiDaPiuDi2AnniENonDisattivati();
+
+	public List<Satellite> trovaSatellitiDisattivatiMaNonAncoraRientrati();
 }

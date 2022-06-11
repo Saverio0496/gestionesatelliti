@@ -138,7 +138,7 @@ public class SatelliteController {
 		redirectAttrs.addFlashAttribute("successMessage", "Lancio eseguito perfettamente!");
 		return "redirect:/satellite";
 	}
-	
+
 	@GetMapping("/comeback/{idSatellite}")
 	public String comeback(@PathVariable(required = true) Long idSatellite, RedirectAttributes redirectAttrs) {
 		Satellite satelliteDaFarRientrare = satelliteService.caricaSingoloElemento(idSatellite);
@@ -149,7 +149,7 @@ public class SatelliteController {
 		redirectAttrs.addFlashAttribute("successMessage", "Ricevuto! Rientriamo alla base!");
 		return "redirect:/satellite";
 	}
-	
+
 	@GetMapping("/launched2yearsago")
 	public ModelAndView listAllSatellitiLanciatiDaPiuDi2AnniENonDisattivati() {
 		ModelAndView mv = new ModelAndView();
@@ -158,5 +158,14 @@ public class SatelliteController {
 		mv.setViewName("satellite/list");
 		return mv;
 	}
-	
+
+	@GetMapping("/disabledbutnotreturned")
+	public ModelAndView listAllSatellitiDisattivatiMaNonAncoraRientrati() {
+		ModelAndView mv = new ModelAndView();
+		List<Satellite> results = satelliteService.trovaSatellitiDisattivatiMaNonAncoraRientrati();
+		mv.addObject("satellite_list_attribute", results);
+		mv.setViewName("satellite/list");
+		return mv;
+	}
+
 }
