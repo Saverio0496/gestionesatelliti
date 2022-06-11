@@ -138,5 +138,15 @@ public class SatelliteController {
 		redirectAttrs.addFlashAttribute("successMessage", "Lancio eseguito perfettamente!");
 		return "redirect:/satellite";
 	}
+	
+	@GetMapping("/comeback/{idSatellite}")
+	public String comeback(@PathVariable(required = true) Long idSatellite, RedirectAttributes redirectAttrs) {
+		Satellite satelliteDaFarRientrare = satelliteService.caricaSingoloElemento(idSatellite);
+		satelliteDaFarRientrare.setDataRientro(new Date());
+		satelliteDaFarRientrare.setStato(StatoSatellite.DISATTIVATO);
+		satelliteService.aggiorna(satelliteDaFarRientrare);
 
+		redirectAttrs.addFlashAttribute("successMessage", "Ricevuto! Rientriamo alla base!");
+		return "redirect:/satellite";
+	}
 }
