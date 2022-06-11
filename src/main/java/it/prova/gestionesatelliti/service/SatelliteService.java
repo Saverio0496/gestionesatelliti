@@ -16,4 +16,6 @@ public interface SatelliteService {
 	public void rimuoviPerId(Long idSatellite);
 
 	public List<Satellite> findByExample(Satellite example);
+
+	public List<Satellite> cercaTuttiISatellitiLanciatiDaPiuDi2AnniENonDisattivati();
 }

@@ -149,4 +149,14 @@ public class SatelliteController {
 		redirectAttrs.addFlashAttribute("successMessage", "Ricevuto! Rientriamo alla base!");
 		return "redirect:/satellite";
 	}
+	
+	@GetMapping("/launched2yearsago")
+	public ModelAndView listAllSatellitiLanciatiDaPiuDi2AnniENonDisattivati() {
+		ModelAndView mv = new ModelAndView();
+		List<Satellite> results = satelliteService.cercaTuttiISatellitiLanciatiDaPiuDi2AnniENonDisattivati();
+		mv.addObject("satellite_list_attribute", results);
+		mv.setViewName("satellite/list");
+		return mv;
+	}
+	
 }
