@@ -8,7 +8,7 @@
 	 	<!-- Common imports in pages -->
 	 	<jsp:include page="../header.jsp" />
 	   
-	   <title>Pagina dei Risultati</title>
+	   <title>Satelliti - Risultati</title>
 	 </head>
 	 
 	<body class="d-flex flex-column h-100">
@@ -49,8 +49,8 @@
 				                    <tr>
 			                         	<th>Denominazione</th>
 				                        <th>Codice</th>
-				                        <th>Data Lancio</th>
-				                        <th>Data Rientro</th>
+				                        <th>Data di Lancio</th>
+				                        <th>Data di Lancio</th>
 				                        <th>Stato</th>
 				                        <th>Azioni</th>
 				                    </tr>
@@ -66,13 +66,13 @@
 											<td>
 												<a class="btn  btn-sm btn-outline-secondary" href="${pageContext.request.contextPath}/satellite/show/${satelliteItem.id }">Visualizza</a>
 												<a class="btn  btn-sm btn-outline-primary ml-2 mr-2" href="${pageContext.request.contextPath}/satellite/edit/${satelliteItem.id }">Edit</a>
-												<c:if test="${satelliteItem.dataLancio == null} ">
-													<a class="btn  btn-sm btn-outline-primary ml-2 mr-2" href="${pageContext.request.contextPath}/satellite/launch/${satelliteItem.id }">Edit</a>
-												</c:if>
-												<c:if test="${satelliteItem.dataLancio != null && satelliteItem.dataRientro == null} ">
-													<a class="btn  btn-sm btn-outline-primary ml-2 mr-2" href="${pageContext.request.contextPath}/satellite/return/${satelliteItem.id }">Edit</a>
-												</c:if>
 												<a class="btn btn-outline-danger btn-sm" href="${pageContext.request.contextPath}/satellite/delete/${satelliteItem.id }">Delete</a>
+												<c:if test = "${satelliteItem.dataLancio == null }">
+													<a class="btn  btn-sm btn-outline-dark" href="${pageContext.request.contextPath}/satellite/launch/${satelliteItem.id }">Lancia!</a>
+												</c:if>
+												<c:if test="${satelliteItem.dataLancio != null && satelliteItem.dataRientro == null}">
+													<a class="btn  btn-sm btn-outline-warning" href="${pageContext.request.contextPath}/satellite/return/${satelliteItem.id }">Rientra!</a>
+												</c:if>
 											</td>
 										</tr>
 									</c:forEach>
