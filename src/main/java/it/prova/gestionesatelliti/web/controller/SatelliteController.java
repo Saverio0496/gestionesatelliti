@@ -1,5 +1,6 @@
 package it.prova.gestionesatelliti.web.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -19,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import it.prova.gestionesatelliti.model.Satellite;
+import it.prova.gestionesatelliti.model.StatoSatellite;
 import it.prova.gestionesatelliti.service.SatelliteService;
 import it.prova.gestionesatelliti.validator.SatelliteValidator;
 
@@ -85,30 +87,31 @@ public class SatelliteController {
 
 		} else {
 
-			redirectAttrs.addFlashAttribute("errorMessage", "Operazione fallita, non è possibile eliminare questo satellite!");
+			redirectAttrs.addFlashAttribute("errorMessage",
+					"Operazione fallita, non è possibile eliminare questo satellite!");
 
 		}
 		return "redirect:/satellite";
 	}
-	
+
 	@GetMapping("/search")
 	public String search() {
 		return "satellite/search";
 	}
-	
+
 	@PostMapping("/list")
 	public String listByExample(Satellite example, ModelMap model) {
 		List<Satellite> results = satelliteService.findByExample(example);
 		model.addAttribute("satellite_list_attribute", results);
 		return "satellite/list";
 	}
-	
+
 	@GetMapping("/edit/{idSatellite}")
 	public String edit(@PathVariable(required = true) Long idSatellite, Model model) {
 		model.addAttribute("update_satellite_attr", satelliteService.caricaSingoloElemento(idSatellite));
 		return "satellite/edit";
 	}
-	
+
 	@PostMapping("/update")
 	public String update(@Valid @ModelAttribute("update_satellite_attr") Satellite satellite, BindingResult result,
 			RedirectAttributes redirectAttrs) {
@@ -123,6 +126,17 @@ public class SatelliteController {
 		redirectAttrs.addFlashAttribute("successMessage", "Operazione eseguita correttamente");
 		return "redirect:/satellite";
 
+	}
+
+	@GetMapping("/launch/{idSatellite}")
+	public String launch(@PathVariable(required = true) Long idSatellite, RedirectAttributes redirectAttrs) {
+		Satellite satelliteDaLanciare = satelliteService.caricaSingoloElemento(idSatellite);
+		satelliteDaLanciare.setDataLancio(new Date());
+		satelliteDaLanciare.setStato(StatoSatellite.IN_MOVIMENTO);
+		satelliteService.aggiorna(satelliteDaLanciare);
+
+		redirectAttrs.addFlashAttribute("successMessage", "Lancio eseguito perfettamente!");
+		return "redirect:/satellite";
 	}
 
 }
