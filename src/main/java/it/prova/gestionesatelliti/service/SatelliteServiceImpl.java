@@ -33,6 +33,7 @@ public class SatelliteServiceImpl implements SatelliteService {
 	}
 
 	public void aggiorna(Satellite satelliteInstance) {
+		repository.save(satelliteInstance);
 	}
 
 	@Override
