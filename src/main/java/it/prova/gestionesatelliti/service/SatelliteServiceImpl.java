@@ -21,8 +21,10 @@ public class SatelliteServiceImpl implements SatelliteService {
 		return (List<Satellite>) repository.findAll();
 	}
 
+	@Override
+	@Transactional(readOnly = true)
 	public Satellite caricaSingoloElemento(Long id) {
-		return null;
+		return repository.findById(id).orElse(null);
 	}
 
 	public void aggiorna(Satellite satelliteInstance) {
