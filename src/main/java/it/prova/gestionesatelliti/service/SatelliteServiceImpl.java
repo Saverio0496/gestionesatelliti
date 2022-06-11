@@ -1,8 +1,13 @@
 package it.prova.gestionesatelliti.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.criteria.Predicate;
+
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -42,8 +47,33 @@ public class SatelliteServiceImpl implements SatelliteService {
 		repository.deleteById(idSatellite);
 	}
 
+	@Override
+	@Transactional(readOnly = true)
 	public List<Satellite> findByExample(Satellite example) {
-		return null;
+		Specification<Satellite> specificationCriteria = (root, query, cb) -> {
+
+			List<Predicate> predicates = new ArrayList<Predicate>();
+
+			if (StringUtils.isNotEmpty(example.getDenominazione()))
+				predicates.add(cb.like(cb.upper(root.get("denominazione")),
+						"%" + example.getDenominazione().toUpperCase() + "%"));
+
+			if (StringUtils.isNotEmpty(example.getCodice()))
+				predicates.add(cb.like(cb.upper(root.get("codice")), "%" + example.getCodice().toUpperCase() + "%"));
+
+			if (example.getDataLancio() != null)
+				predicates.add(cb.greaterThanOrEqualTo(root.get("dataLancio"), example.getDataLancio()));
+
+			if (example.getDataRientro() != null)
+				predicates.add(cb.greaterThanOrEqualTo(root.get("dataRientro"), example.getDataRientro()));
+
+			if (example.getStato() != null)
+				predicates.add(cb.equal(root.get("stato"), example.getStato()));
+
+			return cb.and(predicates.toArray(new Predicate[predicates.size()]));
+		};
+
+		return repository.findAll(specificationCriteria);
 	}
 
 }
