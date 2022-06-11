@@ -90,8 +90,17 @@ public class SatelliteServiceImpl implements SatelliteService {
 
 	@Override
 	@Transactional(readOnly = true)
-	public List<Satellite> trovaSatellitiDisattivatiMaNonAncoraRientrati() {
+	public List<Satellite> cercaSatellitiDisattivatiMaNonAncoraRientrati() {
 		return repository.findAllByStatoAndDataRientroIsNull(StatoSatellite.DISATTIVATO);
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<Satellite> cercaSatellitiInOrbitaDaPiuDi10AnniEFissi() {
+		Calendar dataPerConfrontare = Calendar.getInstance();
+		dataPerConfrontare.add(Calendar.YEAR, -10);
+		return repository.findAllByDataLancioBeforeAndStato(dataPerConfrontare.getTime(), StatoSatellite.FISSO);
+
 	}
 
 }

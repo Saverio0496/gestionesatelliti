@@ -19,5 +19,7 @@ public interface SatelliteService {
 
 	public List<Satellite> cercaTuttiISatellitiLanciatiDaPiuDi2AnniENonDisattivati();
 
-	public List<Satellite> trovaSatellitiDisattivatiMaNonAncoraRientrati();
+	public List<Satellite> cercaSatellitiDisattivatiMaNonAncoraRientrati();
+
+	public List<Satellite> cercaSatellitiInOrbitaDaPiuDi10AnniEFissi();
 }

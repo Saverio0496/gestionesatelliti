@@ -162,7 +162,16 @@ public class SatelliteController {
 	@GetMapping("/disabledbutnotreturned")
 	public ModelAndView listAllSatellitiDisattivatiMaNonAncoraRientrati() {
 		ModelAndView mv = new ModelAndView();
-		List<Satellite> results = satelliteService.trovaSatellitiDisattivatiMaNonAncoraRientrati();
+		List<Satellite> results = satelliteService.cercaSatellitiDisattivatiMaNonAncoraRientrati();
+		mv.addObject("satellite_list_attribute", results);
+		mv.setViewName("satellite/list");
+		return mv;
+	}
+
+	@GetMapping("/inorbitfor10yearsandfixed")
+	public ModelAndView listAllSatellitiInOrbitaDaPiuDi10AnniEFissi() {
+		ModelAndView mv = new ModelAndView();
+		List<Satellite> results = satelliteService.cercaSatellitiInOrbitaDaPiuDi10AnniEFissi();
 		mv.addObject("satellite_list_attribute", results);
 		mv.setViewName("satellite/list");
 		return mv;
